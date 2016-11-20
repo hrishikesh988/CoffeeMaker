@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Hint</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+
+
+    <!--String related to Maps -->
+
+    <string name="action_settings">Setting</string>
+    <string name="google_place_api">YOUR KEY HERE</string>
+
+    <!--String related to php server-->
+    <string name="app_name3">php_extended</string>
+
+</resources>
