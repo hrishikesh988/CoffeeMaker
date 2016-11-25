@@ -7,7 +7,7 @@
 
 
     <!--String related to Maps -->
-
+    <string name="current_location">Current Location</string>
     <string name="action_settings">Setting</string>
     <string name="google_place_api">YOUR KEY HERE</string>
 

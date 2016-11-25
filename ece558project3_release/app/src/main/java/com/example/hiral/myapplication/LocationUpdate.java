@@ -10,7 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,11 +32,15 @@ import java.util.concurrent.ExecutionException;
 public class LocationUpdate extends AppCompatActivity{
 
     private EditText send_message;
+    private EditText get_location;
+    private TextView current_location_tv;
     private Button send;
     int Place_Picker_request=1;
     Editable message;
     LoginDataBaseAdapter loginData;
     public double latitude,longitude,modalat,modalon;
+
+
 
 
     public static Intent newIntent(Context packageContext, String username) {
@@ -42,24 +54,55 @@ public class LocationUpdate extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_update);
         send_message = (EditText) findViewById(R.id.Send_Message);
-
+        get_location = (EditText) findViewById(R.id.get_location);
 
         /**
          * TODO: Define onClick Listener for "get_location" text box to get user's current location
          * Hint: Need to define IntentBuilder for PlacePicker built-in UI widget
          * Reference : https://developers.google.com/places/android-api/placepicker
          */
+        get_location.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+
+                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+                Intent intent;
+                try{
+                    intent = builder.build(LocationUpdate.this);
+                    startActivityForResult(intent, Place_Picker_request);
+                }
+
+                catch (GooglePlayServicesNotAvailableException e){
+                    e.printStackTrace();
+                }
+                catch (GooglePlayServicesRepairableException e){
+                    e.printStackTrace();
+                }
+            }
+
+        });
+
 
         /**
          * TODO: Define TextView field to display the address of current location on the UI
          *
          */
+        current_location_tv = (TextView) findViewById(R.id.CurrentLocation_textView);
+        send = (Button) findViewById(R.id.CurrentLocation_Button);
 
         /**
          * TODO: Define onClick Listener for "Current_Location Button"
          * Hint: OnClick event should set the text for TextView field defined above
          */
+        send.setOnClickListener(new View.OnClickListener(){
 
+            @Override
+            public void onClick(View view){
+                current_location_tv.setText("Longitude: "+ longitude +"\n" + "Latitude: " + latitude);
+            }
+
+        });
 
         /**
          * Do not edit the code below as it is dependent on server just fill the required snippets
@@ -136,6 +179,20 @@ public class LocationUpdate extends AppCompatActivity{
                 }
             }
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        LatLng cordinates;
+        if (requestCode == Place_Picker_request) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlacePicker.getPlace(LocationUpdate.this, data);
+                get_location.setText(place.getAddress());
+                cordinates = place.getLatLng();
+                longitude = cordinates.longitude;
+                latitude = cordinates.latitude;
+            }
+        }
     }
 
 
