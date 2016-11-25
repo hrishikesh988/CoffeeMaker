@@ -1,5 +1,7 @@
 package com.example.hiral.myapplication;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -28,10 +30,19 @@ public class LocationUpdate extends AppCompatActivity{
     LoginDataBaseAdapter loginData;
     public double latitude,longitude,modalat,modalon;
 
+
+    public static Intent newIntent(Context packageContext, String username) {
+        Intent i = new Intent( packageContext, LocationUpdate.class);
+        i.putExtra("tx_user_name", username);
+        return i;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_update);
+        send_message = (EditText) findViewById(R.id.Send_Message);
+
 
         /**
          * TODO: Define onClick Listener for "get_location" text box to get user's current location
