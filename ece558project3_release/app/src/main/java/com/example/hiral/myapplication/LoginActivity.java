@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
 
         //OnClick Listener for SignInButton
         Button mSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+
+
         mSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(i);
                 }
                 else{
-                    //Intent i = LocationUpdate.newIntent(LoginActivity.this, userName);
-                    //startActivity(i);
+                    Intent i = LocationUpdate.newIntent(LoginActivity.this, userName);
+                    startActivity(i);
                     Toast.makeText(LoginActivity.this,
                             "username or password does not match",
                             Toast.LENGTH_SHORT).show();
