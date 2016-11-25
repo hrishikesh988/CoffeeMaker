@@ -1,10 +1,13 @@
 package com.example.hiral.myapplication;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 /**
  * Created by Hiral on 7/28/2016.
  */
@@ -43,12 +46,24 @@ public class LoginActivity extends AppCompatActivity {
                 String password = mPasswordView.getText().toString();
 
                 /**TODO: Code here to fetch the Password from database for respective user name
-                 */
+                  *TODO: Code here to check if the password entered matches with the database entry
+                  *TODO: if password matches navigate to LocationUpdate Activity using intent
+                  *TODO: if password does not match show a toast "username or password does not match"
+                  */
+                String correctPwd = loginDataBaseAdapter.getSingleEntry(userName);
 
-                /**TODO: Code here to check if the password entered matches with the database entry
-                 * TODO: if password matches navigate to LocationUpdate Activity using intent
-                 * TODO: if password does not match show a toast "username or password does not match"
-                 */
+                if(password.equals(correctPwd)){
+                    //Intent i  = new Intent(LoginActivity.this, LocationUpdate.class);
+                    Intent i = LocationUpdate.newIntent(LoginActivity.this, userName);
+                    startActivity(i);
+                }
+                else{
+                    //Intent i = LocationUpdate.newIntent(LoginActivity.this, userName);
+                    //startActivity(i);
+                    Toast.makeText(LoginActivity.this,
+                            "username or password does not match",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
