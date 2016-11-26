@@ -8,17 +8,60 @@
 
 
     <!-- TODO: EditText UI Control for editTextUserName -->
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/user_name"
+        />
 
     <!-- TODO: EditText UI Control for editTextPassword -->
+    <EditText
+        android:id="@+id/password"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        />
 
     <!-- TODO: EditText UI Control for editTextConfirmPassword -->
+    <EditText
+        android:id="@+id/confirm_password"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/confirm_password"
+        />
 
     <!-- TODO: EditText UI Control for Latitude -->
+    <EditText
+        android:id="@+id/latitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/lattitude"
+        />
 
     <!-- TODO: EditText UI Control for Longitude-->
+    <EditText
+        android:id="@+id/longitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/longitude"
+        />
 
     <!-- TODO: Button UI Control for buttonCreateAccount -->
-
+    <Button
+        android:id="@+id/create_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create_account"
+        />
     <!-- TODO: Button UI Control for Home_Button -->
+    <Button
+        android:id="@+id/set_home_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/set_home_location"
+        />
 
 </LinearLayout>

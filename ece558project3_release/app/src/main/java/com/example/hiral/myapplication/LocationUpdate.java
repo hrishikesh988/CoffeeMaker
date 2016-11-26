@@ -126,14 +126,14 @@ public class LocationUpdate extends AppCompatActivity{
                  * TODO: Enable the code below after defining getLat() and getLng()
                  * TODO: methods in LoginDataBaseAdapter
                  */
-                //String rx_lat=loginData.getLat(rx_username);
-                //String rx_lon=loginData.getLng(rx_username);
+                String rx_lat=loginData.getLat(rx_username);
+                String rx_lon=loginData.getLng(rx_username);
 
                 /**
                  * store in latitude , longitude variables to pass to json object
                  */
-                modalat=Double.parseDouble("Pass Latitude over here named:rx_lat");
-                modalon=Double.parseDouble("Pass Longitude over here named:rx_lon");
+                modalat=Double.parseDouble(rx_lat);
+                modalon=Double.parseDouble(rx_lon);
 
                 try {
 
@@ -183,14 +183,14 @@ public class LocationUpdate extends AppCompatActivity{
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        LatLng cordinates;
+        LatLng coordinates;
         if (requestCode == Place_Picker_request) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(LocationUpdate.this, data);
                 get_location.setText(place.getAddress());
-                cordinates = place.getLatLng();
-                longitude = cordinates.longitude;
-                latitude = cordinates.latitude;
+                coordinates = place.getLatLng();
+                longitude = coordinates.longitude;
+                latitude = coordinates.latitude;
             }
         }
     }

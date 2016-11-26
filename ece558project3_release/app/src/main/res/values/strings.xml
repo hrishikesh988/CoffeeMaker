@@ -5,6 +5,15 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
 
+    <!-- Strings related to sign up -->
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="lattitude">Lattitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="create_account">Create Account</string>
+    <string name="set_home_location">Set Home Location</string>
+
 
     <!--String related to Maps -->
     <string name="current_location">Current Location</string>
