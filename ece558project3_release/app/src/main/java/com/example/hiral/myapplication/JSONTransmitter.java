@@ -3,6 +3,7 @@ import android.os.AsyncTask;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.params.HttpClientParams;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
@@ -18,7 +19,7 @@ public class JSONTransmitter extends AsyncTask <JSONObject,JSONObject, JSONObjec
      * you have to use the one assigned to your team
      * Edit the url string " http://76.105.208.49:8080/Your Team Name.php"
      */
-    String url = "http://76.105.208.49:8080/Your_Team_Name.php";
+    String url = "http://76.105.208.49:8080/grp16.php";
 
     @Override
     protected JSONObject doInBackground(JSONObject... data) {

@@ -7,6 +7,8 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,13 +41,27 @@ public class SignUPActivity extends LoginActivity
          * TODO: Define EditText attributes for editTextUserName,editTextPassword,editTextConfirmPassword
          */
 
+        // Definition of editTextUserName attribute
+        editTextUserName = (EditText) findViewById(R.id.user_name);
+        editTextPassword = (EditText) findViewById(R.id.password);
+        editTextConfirmPassword = (EditText) findViewById(R.id.confirm_password);
+
+
         /**
          * TODO: Define EditText Attribute for latitude,longitude
          */
+        // Definition of latitude attribute
+        latitude = (EditText) findViewById(R.id.latitude);
+
+        // Definition of longitude attribute
+        longitude = (EditText) findViewById(R.id.longitude);
 
         /**
          * TODO: Define Button attribute for btnCreateAccount
          */
+        // Definition of btnCreateAccount attribute
+        btnCreateAccount = (Button) findViewById(R.id.create_account);
+
 
         //int percode=1;
         ActivityCompat.requestPermissions(SignUPActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
@@ -53,6 +69,8 @@ public class SignUPActivity extends LoginActivity
         /**
          * TODO: Define Button attribute for btnHomeLocation
          */
+        // Definition of btnHomeLocation attribute
+        btnHomeLocation = (Button) findViewById(R.id.set_home_location);
 
         btnHomeLocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -116,6 +134,11 @@ public class SignUPActivity extends LoginActivity
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
                 }
 
+                editTextUserName.setEnabled(false);
+                editTextPassword.setEnabled(false);
+                editTextConfirmPassword.setEnabled(false);
+                latitude.setEnabled(false);
+                longitude.setEnabled(false);
             }
         });
     }

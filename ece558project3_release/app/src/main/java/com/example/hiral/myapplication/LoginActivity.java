@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //OnClick Listener for SignInButton
         Button mSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mSignUpButton = (Button) findViewById(R.id.email_sign_up_button);
 
 
         mSignInButton.setOnClickListener(new OnClickListener() {
@@ -60,8 +61,6 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(i);
                 }
                 else{
-                    Intent i = LocationUpdate.newIntent(LoginActivity.this, userName);
-                    startActivity(i);
                     Toast.makeText(LoginActivity.this,
                             "username or password does not match",
                             Toast.LENGTH_SHORT).show();
@@ -69,7 +68,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        mSignUpButton.setOnClickListener(new OnClickListener(){
 
+            @Override
+            public void onClick(View view){
+                Intent i = new Intent(LoginActivity.this, SignUPActivity.class);
+                startActivity(i);
+            }
+
+        });
         /** TODO: Code here to create onclick listener for SignUp Button
          *  TODO: OnClick event for SignUp Button Navigates to SignUpActivity
          */
